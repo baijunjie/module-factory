@@ -1,0 +1,19 @@
+{
+  "name": "@mod/template",
+  "version": "0.1.1-beta.2",
+  "description": "Module factory template",
+  "author": "baijunjie",
+  "license": "MIT",
+  "main": "index.js",
+  "files": [
+    "template"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/baijunjie/module-factory.git"
+  },
+  "bugs": {
+    "url": "https://github.com/baijunjie/module-factory/issues"
+  },
+  "homepage": "https://github.com/baijunjie/module-factory/blob/dev/@mod/template#readme"
+}

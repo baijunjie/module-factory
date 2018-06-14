@@ -1,6 +1,6 @@
 {
-  "name": "@mod/utils",
-  "version": "0.1.1-beta.2",
+  "name": "@module-factory/utils",
+  "version": "0.1.1-beta.3",
   "description": "Module factory utils",
   "author": "baijunjie",
   "license": "MIT",
@@ -15,5 +15,5 @@
   "bugs": {
     "url": "https://github.com/baijunjie/module-factory/issues"
   },
-  "homepage": "https://github.com/baijunjie/module-factory/blob/dev/@mod/utils#readme"
+  "homepage": "https://github.com/baijunjie/module-factory/tree/master/packages/@module-factory/utils#readme"
 }

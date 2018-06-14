@@ -1,6 +1,6 @@
 # module-factory
 
-> 模块工厂，基于Webpack的模块开发脚手架
+> Module factory - module development scaffolding based on Webpack
 
 ## Install
 

@@ -1,6 +1,7 @@
 {
+  "private": true,
   "name": "module-factory",
-  "version": "0.1.1-beta.2",
+  "version": "0.1.1-beta.6",
   "description": "CLI for module development",
   "author": "baijunjie",
   "license": "MIT",
@@ -8,8 +9,23 @@
     "mod": "bin/mod.js"
   },
   "workspaces": [
-    "packages/@mod/*"
+    "packages/@module-factory/*"
   ],
+  "files": [
+    "bin",
+    "lib",
+    "!.DS_Store"
+  ],
+  "dependencies": {
+    "@module-factory/shared-utils": "latest",
+    "chalk": "^2.4.1",
+    "commander": "^2.15.1",
+    "execa": "^0.10.0",
+    "fs-extra": "^6.0.1",
+    "inquirer": "^6.0.0",
+    "semver": "^5.5.0",
+    "validate-npm-package-name": "^3.0.0"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/baijunjie/module-factory.git"
@@ -20,22 +36,5 @@
   "homepage": "https://github.com/baijunjie/module-factory#readme",
   "engines": {
     "node": ">=8"
-  },
-  "dependencies": {
-    "chalk": "^2.4.1",
-    "commander": "^2.15.1",
-    "debug": "^3.1.0",
-    "execa": "^0.10.0",
-    "fs-extra": "^6.0.1",
-    "inquirer": "^6.0.0",
-    "ora": "^2.1.0",
-    "request-promise-native": "^1.0.5",
-    "resolve": "^1.7.1",
-    "semver": "^5.5.0",
-    "validate-npm-package-name": "^3.0.0"
-  },
-  "files": [
-    "bin",
-    "lib"
-  ]
+  }
 }

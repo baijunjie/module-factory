@@ -6,7 +6,8 @@
   "license": "MIT",
   "main": "index.js",
   "files": [
-    "webpack.config"
+    "webpack.config",
+    "!.DS_Store"
   ],
   "dependencies": {
     "babel-core": "^6.26.3",

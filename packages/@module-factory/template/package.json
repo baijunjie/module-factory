@@ -1,13 +1,18 @@
 {
   "name": "@module-factory/template",
-  "version": "0.1.1-beta.3",
+  "version": "0.1.1-beta.16",
   "description": "Module factory template",
   "author": "baijunjie",
   "license": "MIT",
   "main": "index.js",
   "files": [
-    "template"
+    "template",
+    "!.DS_Store"
   ],
+  "dependencies": {
+    "@module-factory/shared-utils": "latest",
+    "globby": "^8.0.1"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/baijunjie/module-factory.git"

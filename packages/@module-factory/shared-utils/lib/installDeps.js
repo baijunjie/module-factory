@@ -1,7 +1,7 @@
 const chalk = require('chalk')
 const execa = require('execa')
 const readline = require('readline')
-const debug = require('debug')(`${require('../../package.json').name}:install`)
+const debug = require('debug')('install')
 
 function toStartOfLine (stream) {
   if (!chalk.supportsColor) {

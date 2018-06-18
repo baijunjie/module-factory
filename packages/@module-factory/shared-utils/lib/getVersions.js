@@ -1,7 +1,6 @@
 const request = require('./request')
-const current = require(`../../package.json`).version
 
-module.exports = async function getVersions(moduleName) {
+exports.getVersions = async (moduleName, current) => {
   process.env.MODULE_VERSION = process.env.MODULE_VERSION || {};
 
   let latest

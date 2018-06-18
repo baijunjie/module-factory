@@ -1,0 +1,30 @@
+{
+  "name": "@module-factory/shared-utils",
+  "version": "0.1.1-beta.5",
+  "description": "Module factory shared utils",
+  "author": "baijunjie",
+  "license": "MIT",
+  "main": "index.js",
+  "files": [
+    "lib",
+    "!.DS_Store"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/baijunjie/module-factory.git"
+  },
+  "bugs": {
+    "url": "https://github.com/baijunjie/module-factory/issues"
+  },
+  "homepage": "https://github.com/baijunjie/module-factory/tree/master/packages/@module-factory/shared-utils#readme",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "debug": "^3.1.0",
+    "execa": "^0.10.0",
+    "fs-extra": "^6.0.1",
+    "ora": "^2.1.0",
+    "request": "^2.87.0",
+    "request-promise-native": "^1.0.5",
+    "resolve": "^1.8.0"
+  }
+}

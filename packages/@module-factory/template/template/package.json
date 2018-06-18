@@ -1,9 +1,7 @@
 {
+  "private": true,
+  "version": "0.1.0",
   "description": "",
   "author": "",
-  "license": "MIT",
-  "scripts": {
-    "dev": "webpack-dev-server --config webpack/webpack.config.dev.js --open",
-    "build": "webpack --config webpack/webpack.config.prod.js"
-  }
+  "license": "MIT"
 }

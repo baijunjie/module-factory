@@ -6,7 +6,8 @@
   "license": "MIT",
   "main": "lib/index.js",
   "files": [
-    "lib"
+    "lib",
+    "!.DS_Store"
   ],
   "repository": {
     "type": "git",

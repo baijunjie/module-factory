@@ -12,7 +12,7 @@ function deleteRemovedFiles (directory, newFiles, previousFiles) {
   }))
 }
 
-module.exports = async function writeFileTree (dir, files, previousFiles) {
+exports.writeFileTree = async (dir, files, previousFiles) => {
   if (previousFiles) {
     await deleteRemovedFiles(dir, files, previousFiles)
   }

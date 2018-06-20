@@ -1,60 +1,81 @@
 const fs = require('fs')
 const path = require('path')
+const ejs = require('ejs')
 const globby = require('globby')
+const isBinary = require('isbinaryfile')
 const { sortObject } = require('@module-factory/shared-utils')
+const debug = require('debug')('template')
 
-module.exports = async (name, pkg) => {
+// pkg must contain name attribute
+module.exports = async (pkg) => {
+  // moduleName is camel case name
+  const moduleName = pkg.name.replace(/^\w/i, ($0) => $0.toUpperCase()).replace(/-(\w)/g, ($0, $1) => $1.toUpperCase())
   const filesDir = path.resolve(__dirname, './template')
+
+  debug('filesDir : ' + filesDir)
+
   const filesPath = await globby(['**/*'], { cwd: filesDir })
+
+  debug('filesPath : ' + filesPath)
+
   const files = {}
 
   for (const rawPath of filesPath) {
+    debug('filesPath => rawPath : ' + rawPath)
+
     let filename = path.basename(rawPath)
     // dotfiles are ignored when published to npm, therefore in templates
-    // we need to use underscore instead (e.g. "_gitignore")
+    // we need to use underscore instead (e.g. '_gitignore')
     if (filename.charAt(0) === '_') {
       filename = `.${filename.slice(1)}`
     }
     const targetPath = path.join(path.dirname(rawPath), filename)
     const sourcePath = path.resolve(filesDir, rawPath)
-    const content = fs.readFileSync(sourcePath, 'utf-8')
+    const content = isBinary.sync(sourcePath) ?
+      fs.readFileSync(sourcePath) : // return buffer
+      ejs.render(fs.readFileSync(sourcePath, 'utf-8'), { moduleName })
     // only set file if it's not all whitespace, or is a Buffer (binary files)
     if (Buffer.isBuffer(content) || /[^\s]/.test(content)) {
       files[targetPath] = content
     }
   }
 
-  const camelCaseName = name.replace(/^\w/i, ($0) => $0.toUpperCase()).replace(/-(\w)/g, ($0, $1) => $1.toUpperCase())
-
-  pkg = Object.assign(
-    pkg,
-    JSON.parse(files['package.json']),
-    {
-      main: `dist/${camelCaseName}.js`,
-      module: 'src/index.js',
-      scripts: {
-        'dev': 'webpack-dev-server --config webpack/webpack.config.dev.js' + (
-          // only auto open browser on MacOS where applescript
-          // can avoid dupilcate window opens
-          process.platform === 'darwin' ? ' --open' : ''
-        ),
-        'build': 'webpack --config webpack/webpack.config.prod.js'
+  pkg = sortObject(
+    Object.assign(
+      pkg,
+      {
+        'private': true,
+        'version': '0.1.0',
+        'description': '',
+        'author': '',
+        'license': 'MIT',
+        'main': `dist/${moduleName}.js`,
+        'module': 'src/index.js',
+        'files': [
+          'src',
+          'dist',
+          '!.DS_Store'
+        ]
       }
-    }
-  )
-
-  pkg = sortObject(pkg, [
+    ),
+    [
+      'private',
       'name',
       'version',
-      'private',
+      'description',
+      'author',
+      'license',
       'main',
       'module',
+      'files',
       'scripts',
       'dependencies',
       'devDependencies'
-  ])
+    ]
+  )
 
   files['package.json'] = JSON.stringify(pkg, null, 2)
 
+  debug('package.json : ' + files['package.json'])
   return files
 }

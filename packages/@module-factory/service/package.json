@@ -1,10 +1,14 @@
 {
-  "name": "@module-factory/config",
+  "name": "@module-factory/service",
   "version": "0.1.1-beta.3",
-  "description": "Module factory config",
+  "description": "Module factory service",
   "author": "baijunjie",
   "license": "MIT",
   "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server --config webpack.config/dev.js --open",
+    "build": "webpack --config webpack.config/prod.js"
+  },
   "files": [
     "webpack.config",
     "!.DS_Store"
@@ -31,5 +35,5 @@
   "bugs": {
     "url": "https://github.com/baijunjie/module-factory/issues"
   },
-  "homepage": "https://github.com/baijunjie/module-factory/tree/master/packages/@module-factory/config#readme"
+  "homepage": "https://github.com/baijunjie/module-factory/tree/master/packages/@module-factory/service#readme"
 }

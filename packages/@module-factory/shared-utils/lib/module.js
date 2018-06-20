@@ -1,6 +1,6 @@
 const resolve = require('resolve')
 
-exports.resolveModule = function resolveModule (request, context) {
+exports.resolveModule = (request, context) => {
   let resolvedPath
   try {
     resolvedPath = resolve.sync(request, { basedir: context })
@@ -8,7 +8,7 @@ exports.resolveModule = function resolveModule (request, context) {
   return resolvedPath
 }
 
-exports.loadModule = function loadModule (request, context) {
+exports.loadModule = (request, context) => {
   const resolvedPath = exports.resolveModule(request, context)
   if (resolvedPath) {
     return require(resolvedPath)

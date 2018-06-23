@@ -14,5 +14,13 @@
 <%% for (var chunk in htmlWebpackPlugin.files.chunks) { %%>
 <script src="<%%= htmlWebpackPlugin.files.chunks[chunk].entry %%>"></script>
 <%% } %%>
+
+<script>
+    <% instance = className.replace(/^\w/i, ($0) => $0.toLowerCase()) %>
+    var <%= instance %> = new <%= className %>;
+    console.log('Create <%= className %> : ', <%= instance %>);
+    <%= instance %>.destroy();
+    console.log('Destroy <%= instance %> : ', <%= instance %>);
+</script>
 </body>
 </html>

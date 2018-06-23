@@ -1,10 +1,10 @@
-import isArray from './isArray';
-import isObject from './isObject';
-import isBoolean from './isBoolean';
-import isFunction from './isFunction';
-import isPlainObject from './isPlainObject';
+const isArray = require('./isArray');
+const isObject = require('./isObject');
+const isBoolean = require('./isBoolean');
+const isFunction = require('./isFunction');
+const isPlainObject = require('./isPlainObject');
 
-export default function() {
+module.exports = function extend() {
     let options, name, src, copy, copyIsArray,
         target = arguments[0] || {},
         toString = Object.prototype.toString,
@@ -49,7 +49,7 @@ export default function() {
 
                 // 深拷贝对象或者数组
                 if (deep && copy &&
-                    (copyIsArray = isArray(copy) || isPlainObject(copy))) {
+                    ((copyIsArray = isArray(copy)) || isPlainObject(copy))) {
 
                     if (copyIsArray) {
                         copyIsArray = false;

@@ -9,13 +9,13 @@ const defaultOptions = {
 
 };
 
-$.fn.<%= moduleName %> = function(options) {
-    let className = '<%= moduleName %>',
+$.fn.<%= className %> = function(options) {
+    let className = '<%= className %>',
         inst = this.data(className);
 
     if (isObject(options)) {
         if (inst && isFunction(inst.destroy)) inst.destroy();
-        inst = new <%= moduleName %>(this, options);
+        inst = new <%= className %>(this, options);
         this.data(className, inst);
     } else if (isString(options)) {
         if (isFunction(inst[options])) inst[options]();
@@ -25,17 +25,14 @@ $.fn.<%= moduleName %> = function(options) {
     return this;
 };
 
-class BaseClass {}
-
-export default class <%= moduleName %> extends BaseClass {
+export default class <%= className %> {
     /**
-     * [<%= moduleName %> description]
-     * @param container {[type]} [description]
-     * @param options   {[type]} [description]
+     * [<%= className %> description]
+     * @param element {[type]} [description]
+     * @param options {[type]} [description]
      */
-    constructor(container, options) {
-        super();
-        this._container = container;
+    constructor(element, options) {
+        this._element = element;
         this._options = Object.assign({}, defaultOptions, options);
         this._init();
     }

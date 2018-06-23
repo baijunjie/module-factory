@@ -1,5 +1,5 @@
 // 设置样式
-export default function(elem, prop, value) {
+module.exports = function(elem, prop, value) {
     if (typeof prop === 'object') {
         for (let p in prop) {
             value = prop[p];

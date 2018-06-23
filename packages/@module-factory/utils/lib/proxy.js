@@ -7,7 +7,7 @@
 // 以上两种用法从第三个参数开始可以为调用函数传入若干个参数
 // 如果该函数本身就有默认参数，比如 .each() 方法会给函数传入两个参数，分别为索引号和对应的对象，那么通过代理设置的参数会插在原函数的参数前
 let guid = 0;
-export default function(func, target) {
+module.exports = function(func, target) {
     if (typeof target === 'string') {
         let tmp = func[target];
         target = func;

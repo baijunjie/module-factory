@@ -28,5 +28,5 @@
     'isDOM',
     'isJQ'
 ].forEach(m => {
-    exports[m] = require(`./${m}`).default
+    exports[m] = require(`./${m}`)
 })

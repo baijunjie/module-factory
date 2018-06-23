@@ -1,4 +1,4 @@
 // 判断是否为一个对象
-export default function(obj) {
+module.exports = function(obj) {
     return typeof obj === 'object';
 }

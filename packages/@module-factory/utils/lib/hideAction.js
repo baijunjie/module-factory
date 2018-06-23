@@ -5,7 +5,7 @@
  * @param target {Object}    执行程序时函数中 this 的指向
  */
 const defaultDisplayMap = {};
-export default function(elems, func, target) {
+module.exports = function(elems, func, target) {
     if (typeof elems !== 'object') {
         elems = [];
     }

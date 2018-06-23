@@ -24,7 +24,8 @@ program
 // Define the `create` command
 program
   .command('create <module-name>')
-  .description('create a new module powered by mod')
+  .description('create a new module powered by module-factory')
+  .option('-n, --className <name>', 'Module class name, default is upper camel case for the module name')
   .option('-m, --packageManager <command>', 'Use specified npm client when installing dependencies')
   .option('-r, --registry <url>', 'Use specified npm registry when installing dependencies (only for npm)')
   .option('-g, --git [message]', 'Force / skip git intialization, optionally specify initial commit message')
@@ -38,6 +39,7 @@ program
   .command('dev [config]')
   .description('Launch development mode. [config] User personalization config file, The "mod.config.js" file in the root directory is used by default.')
   .option('-o, --open', 'Open browser')
+  .option('-p, --port <port>', 'server listen port')
   .action((config, cmd) => {
     require('../lib/service')('dev', config, cleanArgs(cmd))
   })
@@ -46,7 +48,6 @@ program
 program
   .command('build [config]')
   .description('Build the final code. [config] User personalization config file, The "mod.config.js" file in the root directory is used by default.')
-  .option('-n, --name <name>', 'name for lib or web-component mode (default: entry filename)')
   .option('-d, --dest <dir>', 'output directory (default: dist)')
   .action((config, cmd) => {
     require('../lib/service')('prod', config, cleanArgs(cmd))

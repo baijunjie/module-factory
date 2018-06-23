@@ -1,7 +1,7 @@
-import isString from './isString';
-import isArray from './isArray';
+const isString = require('./isString');
+const isArray = require('./isArray');
 
-export function createApi(context, ...args) {
+module.exports = function(context, ...args) {
     args.forEach(arg => {
         let privateName, publicName;
 

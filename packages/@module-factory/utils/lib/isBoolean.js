@@ -1,4 +1,4 @@
 // 判断是否为布尔值
-export default function(bool) {
+module.exports = function(bool) {
     return typeof bool === 'boolean';
 }

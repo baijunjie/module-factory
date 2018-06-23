@@ -31,7 +31,7 @@ $ cd path/to/<module-name>
 $ mod create .
 ```
 
-## Development
+## Develop
 
 In the module directory.
 

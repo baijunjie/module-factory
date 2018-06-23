@@ -1,8 +1,8 @@
 {
   "private": true,
   "name": "module-factory",
-  "version": "0.1.1-beta.8",
-  "description": "CLI for module development",
+  "version": "0.1.2-beta.1",
+  "description": "Develop the UMD module using ES6 syntax",
   "author": "baijunjie",
   "license": "MIT",
   "bin": {

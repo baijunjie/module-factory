@@ -1,5 +1,5 @@
 // 创建元素
-export default function(parentNode, className, id, prop) {
+module.exports = function(parentNode, className, id, prop) {
     let elem = document.createElement('DIV');
 
     if (typeof className === 'object') {

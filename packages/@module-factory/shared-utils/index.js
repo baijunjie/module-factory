@@ -6,7 +6,7 @@
   'request',
   'sortObject',
   'spinner',
-  'Version',
+  'version',
   'writeFileTree'
 ].forEach(m => {
   Object.assign(exports, require(`./lib/${m}`))

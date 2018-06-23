@@ -4,12 +4,13 @@ const ejs = require('ejs')
 const globby = require('globby')
 const isBinary = require('isbinaryfile')
 const { sortObject } = require('@module-factory/shared-utils')
+const { extend } = require('@module-factory/utils')
 const debug = require('debug')('template')
 
 // pkg must contain name attribute
-module.exports = async (pkg) => {
-  // moduleName is camel case name
-  const moduleName = pkg.name.replace(/^\w/i, ($0) => $0.toUpperCase()).replace(/-(\w)/g, ($0, $1) => $1.toUpperCase())
+module.exports = async (className, pkg) => {
+  // default is upper camel case for the module name
+  className = className || pkg.name.replace(/^\w/i, ($0) => $0.toUpperCase()).replace(/-(\w)/g, ($0, $1) => $1.toUpperCase())
   const filesDir = path.resolve(__dirname, './template')
 
   debug('filesDir : ' + filesDir)
@@ -33,7 +34,7 @@ module.exports = async (pkg) => {
     const sourcePath = path.resolve(filesDir, rawPath)
     const content = isBinary.sync(sourcePath) ?
       fs.readFileSync(sourcePath) : // return buffer
-      ejs.render(fs.readFileSync(sourcePath, 'utf-8'), { moduleName })
+      ejs.render(fs.readFileSync(sourcePath, 'utf-8'), { className })
     // only set file if it's not all whitespace, or is a Buffer (binary files)
     if (Buffer.isBuffer(content) || /[^\s]/.test(content)) {
       files[targetPath] = content
@@ -41,7 +42,8 @@ module.exports = async (pkg) => {
   }
 
   pkg = sortObject(
-    Object.assign(
+    extend(
+      true,
       pkg,
       {
         'private': true,
@@ -49,13 +51,17 @@ module.exports = async (pkg) => {
         'description': '',
         'author': '',
         'license': 'MIT',
-        'main': `dist/${moduleName}.js`,
+        'main': `dist/${className}.js`,
         'module': 'src/index.js',
         'files': [
           'src',
           'dist',
           '!.DS_Store'
-        ]
+        ],
+        'devDependencies': {
+          '@module-factory/utils': 'latest',
+          'lodash': 'latest'
+        }
       }
     ),
     [

@@ -1,4 +1,4 @@
 // 判断是否为未定义
-export default function(value) {
+module.exports = function(value) {
     return typeof value === undefined;
 }

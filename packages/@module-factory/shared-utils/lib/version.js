@@ -34,9 +34,9 @@ exports.updateVersionTips = async (moduleName, currentVersion) => {
 
   if (semver.gt(latest, current)) {
     title += chalk.green(`
-┌────────────────────${`─`.repeat(latest.length)}──┐
-│  Update available: ${latest}  │
-└────────────────────${`─`.repeat(latest.length)}──┘`)
+┌─────────────────────${`─`.repeat(latest.length)}──┐
+│  Update available: v${latest}  │
+└─────────────────────${`─`.repeat(latest.length)}──┘`)
   }
 
   clearConsole(title)

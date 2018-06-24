@@ -6,6 +6,9 @@
 <title><%%= htmlWebpackPlugin.options.title %%></title>
 </head>
 <body ontouchstart>
+<center>
+    <h1>Open the browser console to see the "Console"</h1>
+</center>
 
 <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -14,9 +17,8 @@
 <%% for (var chunk in htmlWebpackPlugin.files.chunks) { %%>
 <script src="<%%= htmlWebpackPlugin.files.chunks[chunk].entry %%>"></script>
 <%% } %%>
-
+<% instance = className.replace(/^\w/i, ($0) => $0.toLowerCase()) %>
 <script>
-    <% instance = className.replace(/^\w/i, ($0) => $0.toLowerCase()) %>
     var <%= instance %> = new <%= className %>;
     console.log('Create <%= className %> : ', <%= instance %>);
     <%= instance %>.destroy();

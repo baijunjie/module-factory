@@ -3,6 +3,11 @@ module.exports = {
     entry: {
       <%= className %>: './src/index.js' // 相对于根目录
     },
+    resolve: {
+      alias: {
+        'utils': '@module-factory/utils'
+      }
+    },
     externals: {
       'jquery': {
         commonjs: 'jquery',

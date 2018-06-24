@@ -1,9 +1,9 @@
 import $ from 'jquery';
-import isObject from '@module-factory/utils/isObject';
-import isFunction from '@module-factory/utils/isFunction';
-import isString from '@module-factory/utils/isString';
-import createApi from '@module-factory/utils/createApi';
-import destroy from '@module-factory/utils/destroy';
+import isObject from 'utils/isObject';
+import isFunction from 'utils/isFunction';
+import isString from 'utils/isString';
+import createApi from 'utils/createApi';
+import destroy from 'utils/destroy';
 
 const defaultOptions = {
 
@@ -39,7 +39,7 @@ export default class <%= className %> {
 
     _init() {
         this._addEvent();
-        createApi('destroy');
+        createApi(this, 'destroy');
     }
 
     _addEvent() {

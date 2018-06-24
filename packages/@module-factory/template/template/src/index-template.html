@@ -10,14 +10,13 @@
     <h1>Open the browser console to see the "Console"</h1>
 </center>
 
-<script
+<% if (useJQuery) { %><script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
-<%% for (var chunk in htmlWebpackPlugin.files.chunks) { %%>
+<% } %><%% for (var chunk in htmlWebpackPlugin.files.chunks) { %%>
 <script src="<%%= htmlWebpackPlugin.files.chunks[chunk].entry %%>"></script>
-<%% } %%>
-<% instance = className.replace(/^\w/i, ($0) => $0.toLowerCase()) %>
+<%% } %%><% instance = className.replace(/^\w/i, ($0) => $0.toLowerCase()) %>
 <script>
     var <%= instance %> = new <%= className %>;
     console.log('Create <%= className %> : ', <%= instance %>);

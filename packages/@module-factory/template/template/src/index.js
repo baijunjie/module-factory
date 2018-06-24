@@ -1,13 +1,9 @@
-import $ from 'jquery';
-import isObject from 'utils/isObject';
-import isFunction from 'utils/isFunction';
-import isString from 'utils/isString';
 import createApi from 'utils/createApi';
 import destroy from 'utils/destroy';
-
-const defaultOptions = {
-
-};
+<% if (useJQuery) { %>import isObject from 'utils/isObject';
+import isFunction from 'utils/isFunction';
+import isString from 'utils/isString';
+import $ from 'jquery';
 
 $.fn.<%= className %> = function(options) {
     let className = '<%= className %>',
@@ -23,6 +19,10 @@ $.fn.<%= className %> = function(options) {
     }
 
     return this;
+};
+<% } %>
+const defaultOptions = {
+
 };
 
 export default class <%= className %> {

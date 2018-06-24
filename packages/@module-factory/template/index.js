@@ -3,6 +3,7 @@ const path = require('path')
 const ejs = require('ejs')
 const globby = require('globby')
 const isBinary = require('isbinaryfile')
+const inquirer = require('inquirer')
 const { sortObject } = require('@module-factory/shared-utils')
 const { extend } = require('@module-factory/utils')
 const debug = require('debug')('template')
@@ -11,6 +12,9 @@ const debug = require('debug')('template')
 module.exports = async (className, pkg) => {
   // default is upper camel case for the module name
   className = className || pkg.name.replace(/^\w/i, ($0) => $0.toUpperCase()).replace(/-(\w)/g, ($0, $1) => $1.toUpperCase())
+
+  const useJQuery = await whetherUseJQuery()
+
   const filesDir = path.resolve(__dirname, './template')
 
   debug('filesDir : ' + filesDir)
@@ -34,7 +38,7 @@ module.exports = async (className, pkg) => {
     const sourcePath = path.resolve(filesDir, rawPath)
     const content = isBinary.sync(sourcePath) ?
       fs.readFileSync(sourcePath) : // return buffer
-      ejs.render(fs.readFileSync(sourcePath, 'utf-8'), { className })
+      ejs.render(fs.readFileSync(sourcePath, 'utf-8'), { className, useJQuery })
     // only set file if it's not all whitespace, or is a Buffer (binary files)
     if (Buffer.isBuffer(content) || /[^\s]/.test(content)) {
       files[targetPath] = content
@@ -84,4 +88,13 @@ module.exports = async (className, pkg) => {
 
   debug('package.json : ' + files['package.json'])
   return files
+}
+
+async function whetherUseJQuery() {
+  const answers = await inquirer.prompt([{
+    name: 'useJQuery',
+    type: 'confirm',
+    message: 'Whether to use jQuery?'
+  }])
+  return answers.useJQuery
 }

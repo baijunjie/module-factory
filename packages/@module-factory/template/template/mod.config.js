@@ -9,12 +9,12 @@ module.exports = {
       }
     },
     externals: {
-      'jquery': {
+      <% if (useJQuery) { %>'jquery': {
         commonjs: 'jquery',
         commonjs2: 'jquery',
         amd: 'jquery',
         root: 'jQuery'
-      }
+      }<% } %>
     }
   },
 

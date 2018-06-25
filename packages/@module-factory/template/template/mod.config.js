@@ -1,7 +1,8 @@
+// Webpack configuration
 module.exports = {
   base: {
     entry: {
-      <%= className %>: './src/index.js' // 相对于根目录
+      <%= className %>: './src/index.js'
     },
     resolve: {
       alias: {
@@ -19,7 +20,11 @@ module.exports = {
   },
 
   dev: {
-
+    // https://webpack.js.org/configuration/dev-server/
+    devServer: {
+      host: 'localhost',
+      port: 9000
+    }
   },
 
   prod: {

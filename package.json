@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "module-factory",
-  "version": "0.1.2-beta.1",
+  "version": "0.1.4",
   "description": "Develop the UMD module using ES6 syntax",
   "author": "baijunjie",
   "license": "MIT",

@@ -34,25 +34,6 @@ program
     require('../lib/create')(name, cleanArgs(cmd))
   })
 
-// Define the `dev` command
-program
-  .command('dev [config]')
-  .description('Launch development mode. [config] User personalization config file, The "mod.config.js" file in the root directory is used by default.')
-  .option('-o, --open', 'Open browser')
-  .option('-p, --port <port>', 'server listen port')
-  .action((config, cmd) => {
-    require('../lib/service')('dev', config, cleanArgs(cmd))
-  })
-
-// Define the `build` command
-program
-  .command('build [config]')
-  .description('Build the final code. [config] User personalization config file, The "mod.config.js" file in the root directory is used by default.')
-  .option('-d, --dest <dir>', 'output directory (default: dist)')
-  .action((config, cmd) => {
-    require('../lib/service')('prod', config, cleanArgs(cmd))
-  })
-
 // If enter an undefined <command>, this action is performed
 program
   .arguments('<command>')

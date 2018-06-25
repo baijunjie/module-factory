@@ -36,7 +36,13 @@ $ mod create .
 In the module directory.
 
 ```sh
-$ mod dev
+$ npm run dev
+```
+
+Or using yarn:
+
+```sh
+$ yarn dev
 ```
 
 ## Build
@@ -44,7 +50,13 @@ $ mod dev
 In the module directory.
 
 ```sh
-$ mod build
+$ npm run build
+```
+
+Or using yarn:
+
+```sh
+$ yarn build
 ```
 
 The module is eventually built into the `./dist` directory.

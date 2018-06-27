@@ -4,11 +4,6 @@ module.exports = {
     entry: {
       <%= className %>: './src/index.js'
     },
-    resolve: {
-      alias: {
-        'utils': '@module-factory/utils'
-      }
-    },
     externals: {
       <% if (useJQuery) { %>'jquery': {
         commonjs: 'jquery',

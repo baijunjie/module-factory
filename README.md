@@ -2,61 +2,14 @@
 
 > Module factory - module development scaffolding based on Webpack
 
-## Install
+## Packages
 
-Using npm:
+[**module-factory**](https://github.com/baijunjie/module-factory/tree/master/packages/module-factory) Command line tool for creating scaffolding
 
-```sh
-$ npm install module-factory -g
-```
+[**@module-factory/service**](https://github.com/baijunjie/module-factory/tree/master/packages/@module-factory/service) Development and build service module
 
-Or using yarn:
+[**@module-factory/template**](https://github.com/baijunjie/module-factory/tree/master/packages/@module-factory/template) Create the module that initializes the template
 
-```sh
-$ yarn global add module-factory
-```
+[**@module-factory/shared-utils**](https://github.com/baijunjie/module-factory/tree/master/packages/@module-factory/shared-utils) Scaffolding shared toolset
 
-## Usage
-
-Create module scaffolding.
-
-```sh
-$ mod create <module-name>
-```
-
-If the directory file is already created.
-
-```sh
-$ cd path/to/<module-name>
-$ mod create .
-```
-
-## Develop
-
-In the module directory.
-
-```sh
-$ npm run dev
-```
-
-Or using yarn:
-
-```sh
-$ yarn dev
-```
-
-## Build
-
-In the module directory.
-
-```sh
-$ npm run build
-```
-
-Or using yarn:
-
-```sh
-$ yarn build
-```
-
-The module is eventually built into the `./dist` directory.
+[**@module-factory/utils**](https://github.com/baijunjie/module-factory/tree/master/packages/@module-factory/utils) Module development toolset

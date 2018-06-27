@@ -27,6 +27,7 @@ module.exports = merge(baseWebpackConfig, {
   devServer: {
     contentBase: path.resolve(context, './demo'),
     compress: true, // 一切服务都启用 gzip 压缩
+    progress: true,
     inline: true,
     open: true,
     hot: true

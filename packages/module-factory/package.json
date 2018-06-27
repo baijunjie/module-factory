@@ -1,24 +1,21 @@
 {
-  "private": true,
   "name": "module-factory",
   "version": "0.1.5",
-  "description": "Develop the UMD module using ES6 syntax",
+  "description": "Module factory CLI",
   "author": "baijunjie",
   "license": "MIT",
-  "workspaces": [
-    "build",
-    "packages/module-factory",
-    "packages/@module-factory/*"
-  ],
-  "scripts": {
-    "build": "node build"
+  "bin": {
+    "mod": "bin/mod.js"
   },
+  "files": [
+    "bin",
+    "lib",
+    "!.DS_Store"
+  ],
   "dependencies": {
     "@module-factory/shared-utils": "latest",
-    "@module-factory/utils": "latest",
     "chalk": "^2.4.1",
     "commander": "^2.15.1",
-    "debug": "^3.1.0",
     "execa": "^0.10.0",
     "fs-extra": "^6.0.1",
     "inquirer": "^6.0.0",
@@ -32,5 +29,8 @@
   "bugs": {
     "url": "https://github.com/baijunjie/module-factory/issues"
   },
-  "homepage": "https://github.com/baijunjie/module-factory#readme"
+  "homepage": "https://github.com/baijunjie/module-factory/tree/master/packages/module-factory#readme",
+  "engines": {
+    "node": ">=8"
+  }
 }

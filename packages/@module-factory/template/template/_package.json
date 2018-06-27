@@ -1,0 +1,20 @@
+{
+  "version": "0.1.0",
+  "description": "",
+  "author": "",
+  "license": "MIT",
+  "main": "dist/<%= className %>.js",
+  "module": "src/index.js",
+  "files": [
+    "src",
+    "dist",
+    "!.DS_Store"
+  ],
+  "dependencies": {<% if (useJQuery) { %>
+    "jquery": "latest"<% } %>
+  },
+  "devDependencies": {
+    "@module-factory/utils": "latest"<% if (useLodash) { %>,
+    "lodash": "latest"<% } %>
+  }
+}

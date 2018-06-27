@@ -4,29 +4,29 @@
     'bind',
     'createApi',
     'destroy',
-    'hideAction',
-
-    'createElement',
-    'removeElement',
 
     '$',
     'attr',
     'css',
+    'support',
+    'createElement',
+    'removeElement',
+    'hideAction',
 
     'toArray',
-
     'isArray',
     'isObject',
     'isPlainObject',
     'isEmptyObject',
     'isNumber',
+    'isPercent',
     'isString',
     'isBoolean',
     'isFunction',
     'isUndefined',
     'isDate',
     'isDOM',
-    'isJQ'
+    'isJQ',
 ].forEach(m => {
     exports[m] = require(`./${m}`)
 })

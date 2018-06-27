@@ -5,7 +5,7 @@ const path = require('path')
 const minimist = require('minimist')
 const globby = require('globby')
 const execa = require('execa')
-const { done, error, writeFileTree } = require('@module-factory/shared-utils')
+const { info, done, error, writeFileTree } = require('@module-factory/shared-utils')
 const debug = require('debug')('build')
 
 const args = minimist(process.argv)
@@ -36,18 +36,18 @@ globby(['**/package.json', '!build', '!**/node_modules'], { cwd: context }).then
     debug('file => ' + rawPath + ' : ' + pkg.version)
   }
 
-  debug('Rewriting the package.json...')
+  info('Rewriting the package.json...')
   await writeFileTree(context, files)
-  debug('Rewriting done.')
+  info('Rewriting done.')
 
   modulesDir = Object.entries(modulesDir)
 
   if (publish) {
     await login()
-    debug(`Publish new version ${version}...`)
+    info(`Publish new version ${version}...`)
     for (const [name, path] of modulesDir) {
       try {
-        debug('Publish module : ' + name)
+        info('Publish module : ' + name)
         const p = execa('npm', ['publish'], { cwd: path })
         p.stdout.pipe(process.stdout)
         await p
@@ -61,10 +61,10 @@ globby(['**/package.json', '!build', '!**/node_modules'], { cwd: context }).then
 
   if (unpublish) {
     await login()
-    debug(`Unpublish version ${unpublish} ...`)
+    info(`Unpublish version ${unpublish} ...`)
     for (const [name, path] of modulesDir) {
       try {
-        debug('Unpublish module : ' + `${name}@${unpublish}`)
+        info('Unpublish module : ' + `${name}@${unpublish}`)
         const p = execa('npm', ['unpublish', `${name}@${unpublish}`], { cwd: path })
         p.stdout.pipe(process.stdout)
         await p
@@ -82,7 +82,7 @@ async function login() {
   const token = require('./token')
   console.log(token)
   try {
-    debug('Login...')
+    info('Login...')
     const p = execa('npm', ['login'])
     p.stdout.on('data', data => {
       data = data.toString()

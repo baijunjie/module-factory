@@ -3,16 +3,17 @@
   "description": "",
   "author": "",
   "license": "MIT",
-  "main": "dist/<%= className %>.js",
-  "module": "src/index.js",
+  "main": "dist/<%= className %>.js",<% if (es6Module) { %>
+  "module": "src/index.js",<% } %>
   "files": [
     "src",
     "dist",
     "!.DS_Store"
-  ],
+  ]<% if (deps.length) { %>,
   "dependencies": {
-    "@module-factory/utils": "latest"<% if (useJQuery) { %>,
-    "jquery": "latest"<% } %><% if (useLodash) { %>,
-    "lodash": "latest"<% } %>
-  }
+    <%- deps.join(',\n') %>
+  }<% } %><% if (devDeps.length) { %>,
+  "devDependencies": {
+    <%- devDeps.join(',\n') %>
+  }<% } %>
 }

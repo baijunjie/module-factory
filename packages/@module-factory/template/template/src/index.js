@@ -1,21 +1,20 @@
-import createApi from '@module-factory/utils/createApi';
-import destroy from '@module-factory/utils/destroy';
-<% if (useJQuery) { %>import $ from 'jquery';
-import isObject from '@module-factory/utils/isObject';
-import isFunction from '@module-factory/utils/isFunction';
-import isString from '@module-factory/utils/isString';
+<% utils = es6Module ? '@module-factory/utils' : 'utils'
+%>import createApi from '<%= utils %>/createApi';
+import destroy from '<%= utils %>/destroy';
+<% if (useJQuery) { %>import isString from '<%= utils %>/isString';
+import $ from 'jquery';
 
 $.fn.<%= className %> = function(options) {
     let className = '<%= className %>',
         inst = this.data(className);
 
-    if (isObject(options)) {
-        if (inst && isFunction(inst.destroy)) inst.destroy();
+    if (isString(options)) {
+        if ($.isFunction(inst[options])) inst[options]();
+        if (options === 'destroy') this.removeData(className);
+    } else {
+        if (inst && $.isFunction(inst.destroy)) inst.destroy();
         inst = new <%= className %>(this, options);
         this.data(className, inst);
-    } else if (isString(options)) {
-        if (isFunction(inst[options])) inst[options]();
-        if (options === 'destroy') this.removeData(className);
     }
 
     return this;

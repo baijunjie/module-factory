@@ -11,7 +11,12 @@ module.exports = {
         amd: 'jquery',
         root: 'jQuery'
       }<% } %>
-    }
+    }<% if (!es6Module) { %>,
+    resolve: {
+      alias: {
+        'utils': '@module-factory/utils'
+      }
+    }<% } %>
   },
 
   dev: {

@@ -44,30 +44,32 @@ globby(['**/package.json', '!build', '!**/node_modules'], { cwd: context }).then
   if (publish) {
     await login()
     info(`Publish new version ${version}...`)
-    for (const [name, path] of modulesDir) {
+    let published = false
+    for (const [name, dir] of modulesDir) {
       try {
         info('Publish module : ' + name)
         if (!isDebug) {
-          const p = execa('npm', ['publish'], { cwd: path })
+          const p = execa('npm', ['publish'], { cwd: dir })
           p.stdout.pipe(process.stdout)
           await p
         }
+        published = true
         done('Publish successfully.')
       } catch(err) {
         error(err.stderr)
-        process.exit(1)
+        if (!published && err.stderr.indexOf('You cannot publish over the previously published versions') < 0) process.exit(1)
       }
     }
   }
 
   if (unpublish) {
     await login()
-    info(`Unpublish version ${unpublish} ...`)
-    for (const [name, path] of modulesDir) {
+    info(`Unpublish version ${unpublish}...`)
+    for (const [name, dir] of modulesDir) {
       try {
         info('Unpublish module : ' + `${name}@${unpublish}`)
         if (!isDebug) {
-          const p = execa('npm', ['unpublish', `${name}@${unpublish}`], { cwd: path })
+          const p = execa('npm', ['unpublish', `${name}@${unpublish}`], { cwd: dir })
           p.stdout.pipe(process.stdout)
           await p
         }

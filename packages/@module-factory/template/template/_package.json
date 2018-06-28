@@ -10,11 +10,9 @@
     "dist",
     "!.DS_Store"
   ],
-  "dependencies": {<% if (useJQuery) { %>
-    "jquery": "latest"<% } %>
-  },
-  "devDependencies": {
-    "@module-factory/utils": "latest"<% if (useLodash) { %>,
+  "dependencies": {
+    "@module-factory/utils": "latest"<% if (useJQuery) { %>,
+    "jquery": "latest"<% } %><% if (useLodash) { %>,
     "lodash": "latest"<% } %>
   }
 }

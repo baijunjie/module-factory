@@ -1,6 +1,6 @@
 {
   "name": "@module-factory/template",
-  "version": "0.1.5",
+  "version": "0.1.7",
   "description": "Module factory template",
   "author": "baijunjie",
   "license": "MIT",
@@ -9,6 +9,9 @@
     "template",
     "!.DS_Store"
   ],
+  "scripts": {
+    "test": "node __test__"
+  },
   "dependencies": {
     "@module-factory/shared-utils": "latest",
     "@module-factory/utils": "latest",

@@ -1,9 +1,9 @@
 import createApi from '@module-factory/utils/createApi';
 import destroy from '@module-factory/utils/destroy';
-<% if (useJQuery) { %>import isObject from '@module-factory/utils/isObject';
+<% if (useJQuery) { %>import $ from 'jquery';
+import isObject from '@module-factory/utils/isObject';
 import isFunction from '@module-factory/utils/isFunction';
 import isString from '@module-factory/utils/isString';
-import $ from 'jquery';
 
 $.fn.<%= className %> = function(options) {
     let className = '<%= className %>',

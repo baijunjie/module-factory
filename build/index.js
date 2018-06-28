@@ -1,5 +1,3 @@
-process.env.DEBUG = 'build'
-
 const fs = require('fs')
 const path = require('path')
 const minimist = require('minimist')
@@ -13,10 +11,11 @@ const publish = args.p || args.publish
 const unpublish = args.u || args.unpublish
 const version = args.v || args.version || (typeof publish === 'string' ? publish : null) || require('../package.json').version
 
-debug('version : ' + version)
-if (publish) debug('publish : ' + publish)
-if (unpublish) debug('unpublish : ' + unpublish)
+if (publish) info('publish version : ' + version)
+else info('build version : ' + version)
+if (unpublish) info('unpublish version : ' + unpublish)
 
+const isDebug = process.env.DEBUG === 'build'
 const context = path.resolve(__dirname, '..')
 
 globby(['**/package.json', '!build', '!**/node_modules'], { cwd: context }).then(async filesPath => {
@@ -37,7 +36,7 @@ globby(['**/package.json', '!build', '!**/node_modules'], { cwd: context }).then
   }
 
   info('Rewriting the package.json...')
-  await writeFileTree(context, files)
+  if (!isDebug) await writeFileTree(context, files)
   info('Rewriting done.')
 
   modulesDir = Object.entries(modulesDir)
@@ -48,9 +47,11 @@ globby(['**/package.json', '!build', '!**/node_modules'], { cwd: context }).then
     for (const [name, path] of modulesDir) {
       try {
         info('Publish module : ' + name)
-        const p = execa('npm', ['publish'], { cwd: path })
-        p.stdout.pipe(process.stdout)
-        await p
+        if (!isDebug) {
+          const p = execa('npm', ['publish'], { cwd: path })
+          p.stdout.pipe(process.stdout)
+          await p
+        }
         done('Publish successfully.')
       } catch(err) {
         error(err.stderr)
@@ -65,9 +66,11 @@ globby(['**/package.json', '!build', '!**/node_modules'], { cwd: context }).then
     for (const [name, path] of modulesDir) {
       try {
         info('Unpublish module : ' + `${name}@${unpublish}`)
-        const p = execa('npm', ['unpublish', `${name}@${unpublish}`], { cwd: path })
-        p.stdout.pipe(process.stdout)
-        await p
+        if (!isDebug) {
+          const p = execa('npm', ['unpublish', `${name}@${unpublish}`], { cwd: path })
+          p.stdout.pipe(process.stdout)
+          await p
+        }
         done('Unpublish successfully.')
       } catch(err) {
         error(err.stderr)
@@ -80,7 +83,8 @@ let logined = false
 async function login() {
   if (logined) return Promise.resolve()
   const token = require('./token')
-  console.log(token)
+  debug('User ↓')
+  debug(token)
   try {
     info('Login...')
     const p = execa('npm', ['login'])

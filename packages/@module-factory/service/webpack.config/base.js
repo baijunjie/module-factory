@@ -13,7 +13,6 @@ module.exports = merge({
     rules: [{
       test: /\.js$/,
       loader: 'babel-loader',
-      include: [path.resolve(context, './src')],
       options: {
         presets: [
           'env',

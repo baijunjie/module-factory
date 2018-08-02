@@ -1,9 +1,28 @@
 // 设置样式
+const isObject = require('./isObject');
+const isNumber = require('./isNumber');
+
+const cssNumber = {
+    'animationIterationCount': true,
+    'columnCount': true,
+    'fillOpacity': true,
+    'flexGrow': true,
+    'flexShrink': true,
+    'fontWeight': true,
+    'lineHeight': true,
+    'opacity': true,
+    'order': true,
+    'orphans': true,
+    'widows': true,
+    'zIndex': true,
+    'zoom': true
+};
+
 module.exports = function(elem, prop, value) {
-    if (typeof prop === 'object') {
+    if (isObject(prop)) {
         for (let p in prop) {
             value = prop[p];
-            if (typeof value === 'number') value += 'px';
+            if (isNumber(value) && !cssNumber[prop]) value += 'px';
             elem.style[p] = value;
         }
         return elem;
@@ -12,7 +31,7 @@ module.exports = function(elem, prop, value) {
     if (value === undefined) {
         return window.getComputedStyle(elem)[prop];
     } else {
-        if (typeof value === 'number') value += 'px';
+        if (isNumber(value) && !cssNumber[prop]) value += 'px';
         elem.style[prop] = value;
         return elem;
     }

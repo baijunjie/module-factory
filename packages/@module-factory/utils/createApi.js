@@ -1,3 +1,4 @@
+const isUndefined = require('./isUndefined');
 const isString = require('./isString');
 const isArray = require('./isArray');
 
@@ -16,8 +17,8 @@ module.exports = function(context, ...args) {
         if (!publicName.indexOf('_')) publicName = publicName.substr(1);
 
         context[publicName] = (...args) => {
-            context[privateName](context, ...args);
-            return context;
+            const returnValue = context[privateName].call(context, ...args);
+            return isUndefined(returnValue) ? context : returnValue;
         };
     });
 }

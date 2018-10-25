@@ -23,6 +23,7 @@
     'isString',
     'isBoolean',
     'isFunction',
+    'isAsyncFunction',
     'isUndefined',
     'isDate',
     'isDOM',

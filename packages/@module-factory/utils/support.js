@@ -14,4 +14,6 @@ module.exports = function(prop, all) {
             return '-' + prefix.toLowerCase() + '-' + returnProp;
         }
     }
+
+    return returnProp;
 }

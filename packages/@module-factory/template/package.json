@@ -1,6 +1,6 @@
 {
   "name": "@module-factory/template",
-  "version": "0.1.10",
+  "version": "0.1.14",
   "description": "Module factory template",
   "author": "baijunjie",
   "license": "MIT",
@@ -15,11 +15,11 @@
   "dependencies": {
     "@module-factory/shared-utils": "latest",
     "@module-factory/utils": "latest",
-    "debug": "^3.1.0",
+    "debug": "^4.1.1",
     "ejs": "^2.6.1",
     "globby": "^8.0.1",
-    "inquirer": "^6.0.0",
-    "isbinaryfile": "^3.0.2"
+    "inquirer": "^6.2.1",
+    "isbinaryfile": "^3.0.3"
   },
   "repository": {
     "type": "git",

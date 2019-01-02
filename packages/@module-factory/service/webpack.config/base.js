@@ -15,15 +15,14 @@ module.exports = merge({
       loader: 'babel-loader',
       options: {
         presets: [
-          'env',
-          'stage-0'
+          [ '@babel/preset-env', { 'modules': 'umd' } ]
         ],
         plugins: [
           // lodash 按需加载
           'lodash',
 
           // 这个插件可以兼容一些ES6新增特性，但是也会增加代码体积，慎用
-          // 'transform-runtime',
+          // '@babel/plugin-transform-runtime',
 
           // 这个插件的作用是
           // export default 导出的 ES6 模块被 babel 转义成 UMD 模块后

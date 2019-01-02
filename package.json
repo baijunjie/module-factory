@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "module-factory",
-  "version": "0.1.10",
+  "version": "0.1.14",
   "description": "Develop the UMD module using ES6 syntax",
   "author": "baijunjie",
   "license": "MIT",
@@ -18,12 +18,12 @@
     "@module-factory/shared-utils": "latest",
     "@module-factory/utils": "latest",
     "chalk": "^2.4.1",
-    "commander": "^2.15.1",
-    "debug": "^3.1.0",
-    "execa": "^0.10.0",
-    "fs-extra": "^6.0.1",
-    "inquirer": "^6.0.0",
-    "semver": "^5.5.0",
+    "commander": "^2.19.0",
+    "debug": "^4.1.1",
+    "execa": "^1.0.0",
+    "fs-extra": "^7.0.1",
+    "inquirer": "^6.2.1",
+    "semver": "^5.6.0",
     "validate-npm-package-name": "^3.0.0"
   },
   "repository": {

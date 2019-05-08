@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "dependencies": {
     "@module-factory/shared-utils": "latest",
-    "debug": "^3.1.0",
+    "debug": "^4.1.1",
     "execa": "^1.0.0",
-    "globby": "^8.0.1",
+    "globby": "^9.2.0",
     "minimist": "^1.2.0"
   }
 }

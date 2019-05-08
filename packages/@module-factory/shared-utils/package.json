@@ -1,6 +1,6 @@
 {
   "name": "@module-factory/shared-utils",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "description": "Module factory shared utils",
   "author": "baijunjie",
   "license": "MIT",
@@ -10,15 +10,19 @@
     "!.DS_Store"
   ],
   "dependencies": {
-    "chalk": "^2.4.1",
+    "chalk": "^2.4.2",
     "debug": "^4.1.1",
+    "ejs": "^2.6.1",
     "execa": "^1.0.0",
     "fs-extra": "^7.0.1",
-    "ora": "^3.0.0",
+    "globby": "^9.2.0",
+    "inquirer": "^6.3.1",
+    "isbinaryfile": "^4.0.0",
+    "ora": "^3.4.0",
     "request": "^2.88.0",
-    "request-promise-native": "^1.0.5",
-    "resolve": "^1.9.0",
-    "semver": "^5.6.0"
+    "request-promise-native": "^1.0.7",
+    "resolve": "^1.10.1",
+    "semver": "^6.0.0"
   },
   "repository": {
     "type": "git",

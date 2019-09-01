@@ -1,7 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const baseWebpackConfig = require('./base')
 
@@ -41,17 +41,17 @@ module.exports = [
     optimization: {
       minimize: true,
       minimizer: [
-        new UglifyJSPlugin({
-          uglifyOptions: {
-            // https://github.com/mishoo/UglifyJS2/tree/harmony#output-options
+        new TerserPlugin({
+          terserOptions: {
+            // https://github.com/terser/terser#output-options
             output: {
               comments: new RegExp('^!\\s*\\*\\s*' + className)
             },
-            // https://github.com/mishoo/UglifyJS2/tree/harmony#compress-options
+            // https://github.com/terser/terser#compress-options
             compress: {
-              warnings: false,
+              warnings: true,
               drop_debugger: true,
-              // drop_console: true
+              drop_console: true
             }
           }
         })
